@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: sneakers_shop
+  username: postgres
+  password: zxio512387hj
+  host: localhost
+  port: 5555
+
+production:
+  <<: *default
+  database: shoe_shop_api
+  username: deploy
+  password: kondrat0981
