@@ -60,3 +60,5 @@ website/.idea
 website/build
 website/node_modules
 website/yarn-error.log
+
+.idea
