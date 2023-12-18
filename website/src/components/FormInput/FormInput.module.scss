@@ -1,0 +1,82 @@
+@import "src/assets/styles/vars";
+
+.formInput {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  grid-template-areas: "label input"
+                       ". error";
+  grid-template-rows: 1fr 0fr;
+  gap: 0 50px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  label {
+    grid-area: label;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    user-select: none;
+    sup {
+      color: $error-color;
+    }
+  }
+
+  input {
+    grid-area: input;
+    width: 100%;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 8px 6px;
+    border: 1px solid #ACACAC;
+    border-radius: 5px;
+    transition: .1s ease-in-out;
+
+    &:focus {
+      border-color: $base-color;
+    }
+
+    &.error {
+      //box-shadow: 0 0 4px rgb(255 52 52 / 60%);
+      border-color: $error-color;
+    }
+
+    &::placeholder {
+      color: #757575;
+      user-select: none;
+    }
+  }
+
+  span {
+    grid-area: error;
+    position: absolute;
+    bottom: -16px;
+    color: $error-color;
+    margin-top: -14px;
+  }
+
+  .select {
+    grid-area: input;
+    margin-top: 0;
+    background-color: #fff;
+    max-width: 100%;
+    & > div {
+      &:first-child {
+        box-shadow: none;
+        border: 1px solid #ACACAC;
+        border-radius: 5px;
+        font-size: 16px;
+        line-height: 20px;
+        padding: 8px 6px;
+        height: 100%;
+      }
+    }
+    &.error {
+      & > div {
+        &:first-child {
+          border-color: $error-color;
+        }
+      }
+    }
+  }
+}

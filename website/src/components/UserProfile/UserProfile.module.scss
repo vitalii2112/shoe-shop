@@ -1,0 +1,81 @@
+.userProfile {
+  :global {
+    .btn__wrapper {
+      justify-content: flex-end;
+    }
+  }
+
+  .userForm {
+    margin-bottom: 40px;
+  }
+
+  .formBlock {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 420px) {
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    & > div {
+      margin-bottom: 20px;
+      @media (max-width: 800px) {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 420px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr 0;
+        grid-template-areas:
+        "label"
+        "input"
+        "error";
+        & > label {
+          margin-bottom: 5px;
+        }
+      }
+    }
+
+    &.fill {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .orderTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .userOrders {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+      opacity: 0.6;
+      margin: 16px 0;
+      line-height: 20px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    a {
+      max-width: 300px;
+      color: white;
+    }
+  }
+
+  .emptyOrders {
+    font-size: 24px;
+    text-align: center;
+  }
+}

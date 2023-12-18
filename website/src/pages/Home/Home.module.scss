@@ -1,0 +1,28 @@
+.home {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    gap: 30px;
+
+    @media (max-width: 800px) {
+      margin-bottom: 20px;
+      grid-template-columns: 1fr;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    h1 {
+      margin-bottom: 0;
+    }
+
+    .search {
+      max-width: 300px;
+
+      @media (max-width: 800px) {
+        max-width: unset;
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+# Mark the database schema as having been generated.
+server/db/schema.rb linguist-generated
+
+# Mark any vendored files as having been vendored.
+server/vendor/* linguist-vendored
+
+# Specify paths relative to the root directory
+server/config/credentials/*.yml.enc diff=rails_credentials
+server/config/credentials.yml.enc diff=rails_credentials

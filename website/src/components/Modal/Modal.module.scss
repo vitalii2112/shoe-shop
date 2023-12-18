@@ -1,0 +1,48 @@
+@import "src/assets/styles/vars";
+
+.noScroll {
+  overflow: hidden;
+
+  & body {
+    @media (hover: hover) {
+      padding-right: 5px;
+    }
+    overflow: hidden;
+  }
+}
+
+.modal {
+  max-width: 940px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 25px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+
+  &Block {
+    background-color: rgba(0, 0, 0, 0.5);
+    min-width: 100vw;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 999;
+  }
+
+  &Close {
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 1;
+    @media (hover: hover) {
+      &:hover {
+        fill: $base-color;
+      }
+    }
+  }
+}

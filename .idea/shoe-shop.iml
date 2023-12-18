@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/mobile/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/mobile/android" />
+      <excludeFolder url="file://$MODULE_DIR$/mobile/ios" />
+      <excludeFolder url="file://$MODULE_DIR$/server/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/26" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/5k" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/9c" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/aj" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/ay" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/cg" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/d4" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/ex" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/gq" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/hf" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/jm" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/mw" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/pn" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/qn" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/ss" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/yi" />
+      <excludeFolder url="file://$MODULE_DIR$/server/storage/yu" />
+      <excludeFolder url="file://$MODULE_DIR$/server/tmp/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/server/tmp/sockets" />
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/website/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/website/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

@@ -1,0 +1,63 @@
+@import "src/assets/styles/vars";
+
+.search {
+  grid-area: search;
+  display: grid;
+  grid-template-columns: 1fr 54px;
+  width: 100%;
+  position: relative;
+
+  input {
+    width: 100%;
+    background-color: #FFF;
+    border: 1px solid #ACACAC;
+    border-right: 0;
+    border-radius: 5px 0 0 5px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    padding: 14px 20px 14px 12px;
+    transition: .1s ease-in-out;
+    height: 50px;
+
+    &:after {
+
+    }
+
+    &::placeholder {
+      color: #757575;
+    }
+
+    &:focus {
+      border-color: #000;
+    }
+  }
+
+  .closeBtn {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    fill: #9B9B9B;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: fill .1s ease-in-out;
+    &:hover {
+      fill: $base-color;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 0 5px 5px 0;
+    background-color: $base-color;
+    transition: .1s ease-in-out;
+
+    &:hover {
+      background-color: $base-color-darken;
+    }
+  }
+}

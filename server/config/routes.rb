@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :items, except: [:show]
+  resources :items
   resources :orders, only: [:create, :show, :index]
   get 'orders/user/:user_id', to: 'orders#user_orders'
 

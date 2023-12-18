@@ -2,13 +2,18 @@ class ItemsController < ApplicationController
   include AdminCheck
   before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :require_admin, only: [:create, :update, :destroy]
-  before_action :set_item, only: [:update, :destroy]
+  before_action :set_item, only: [:update, :destroy, :show]
 
   # GET /items
   def index
     search_term = params[:search]
     @items = search_term.present? ? Item.where("name ILIKE ? OR description ILIKE ?", "%#{search_term}%", "%#{search_term}%") : Item.all
     render json: @items.order(id: :desc).map { |item| get_item(item) }
+  end
+
+  # GET /items/1
+  def show
+    render json: get_item(@item)
   end
 
   # POST /items

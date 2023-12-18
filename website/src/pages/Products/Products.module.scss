@@ -1,0 +1,29 @@
+.products {
+  .emptyTitle {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    @media (max-width: 420px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    h1 {
+      margin-bottom: 0;
+    }
+    button {
+      max-width: 200px;
+      @media (max-width: 420px) {
+        max-width: unset;
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+  }
+}

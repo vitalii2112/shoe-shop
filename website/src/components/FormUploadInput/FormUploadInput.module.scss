@@ -1,0 +1,132 @@
+@import "src/assets/styles/vars";
+
+.formControl {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  grid-template-areas:
+        "label input"
+        ". error";
+  grid-template-rows: 1fr 0fr;
+  gap: 0 50px;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  sup {
+    color: $error-color;
+  }
+
+  &.error {
+    span {
+      font-size: 14px;
+      color: $error-color;
+    }
+
+    .fileWrapper {
+      &:after {
+        border: 1px solid $error-color;
+      }
+
+      &:before {
+        background: $error-color;
+      }
+
+      &:hover {
+        &:before {
+          background: darken($error-color, 15%);
+        }
+      }
+    }
+  }
+
+  & > label {
+    grid-area: label;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    user-select: none;
+  }
+
+  .fileWrapper {
+    position: relative;
+    width: 100%;
+    height: 41px;
+
+    label {
+      display: block;
+      width: 100%;
+      height: 40px;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    input {
+      display: none;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+
+    &.uploaded {
+      &:after {
+        content: "Файл выбран";
+      }
+    }
+
+    &:after {
+      content: "Выберите файл";
+      font-size: 16px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #fff;
+      padding: 10px 15px;
+      display: block;
+      width: calc(100% - 50px);
+      pointer-events: none;
+      z-index: 1;
+      height: 41px;
+      line-height: 20.5px;
+      color: #999;
+      border-radius: 5px 0 0 5px;
+      font-weight: 300;
+      border: 1px solid #ACACAC;
+      border-right-color: transparent;
+      transition: .1s ease-in-out;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      font-size: 18px;
+      top: 0;
+      right: 0;
+      background: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22%23fff%22%20width%3D%2230%22%20height%3D%2230%22%3E%3Cpath%20d%3D%22M8.71%2C7.71%2C11%2C5.41V15a1%2C1%2C0%2C0%2C0%2C2%2C0V5.41l2.29%2C2.3a1%2C1%2C0%2C0%2C0%2C1.42%2C0%2C1%2C1%2C0%2C0%2C0%2C0-1.42l-4-4a1%2C1%2C0%2C0%2C0-.33-.21%2C1%2C1%2C0%2C0%2C0-.76%2C0%2C1%2C1%2C0%2C0%2C0-.33.21l-4%2C4A1%2C1%2C0%2C1%2C0%2C8.71%2C7.71ZM21%2C12a1%2C1%2C0%2C0%2C0-1%2C1v6a1%2C1%2C0%2C0%2C1-1%2C1H5a1%2C1%2C0%2C0%2C1-1-1V13a1%2C1%2C0%2C0%2C0-2%2C0v6a3%2C3%2C0%2C0%2C0%2C3%2C3H19a3%2C3%2C0%2C0%2C0%2C3-3V13A1%2C1%2C0%2C0%2C0%2C21%2C12Z%22%2F%3E%3C%2Fsvg%3E") center no-repeat $base-color;
+      color: #fff;
+      z-index: 3;
+      line-height: 20.5px;
+      width: 50px;
+      height: 41px;
+      padding: 10px;
+      pointer-events: none;
+      text-align: center;
+      border-radius: 0 5px 5px 0;
+      transition: .1s ease-in-out;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        &:after {
+          border-left-color: $base-color-darken;
+          border-top-color: $base-color-darken;
+          border-bottom-color: $base-color-darken;
+        }
+
+        &:before {
+          background-color: $base-color-darken;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.burger {
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  .nav {
+    & > li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 18px;
+      border-bottom: 1px solid #eaeaea;
+      padding-bottom: 10px;
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      svg {
+        margin-right: 10px;
+        width: 30px;
+        height: 30px;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

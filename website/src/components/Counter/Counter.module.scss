@@ -1,0 +1,16 @@
+.counter {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  input {
+    width: 50px;
+    background: #FFFFFF !important;
+    border: 1px solid #9A9A9A;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 10px;
+    text-align: center;
+    margin: 0;
+  }
+}

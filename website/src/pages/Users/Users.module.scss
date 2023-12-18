@@ -1,0 +1,57 @@
+@import "src/assets/styles/vars";
+
+.users {
+  .table {
+    @media (max-width: 800px) {
+      max-width: calc(100vw - 40px);
+      overflow-x: scroll;
+    }
+
+    .align {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        cursor: default;
+      }
+    }
+
+    & > a {
+      display: grid;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      padding: 10px 20px;
+      line-height: 20px;
+      transition: 0.1s ease-in-out;
+      grid-template-columns: 50px 1fr 1fr 1fr 100px;
+      cursor: pointer;
+
+      @media (max-width: 800px) {
+        width: 1000px;
+      }
+
+      & > div {
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: $table-color;
+        }
+      }
+    }
+
+    & > div {
+      grid-template-columns: 50px 1fr 1fr 1fr 100px;
+
+      @media (max-width: 800px) {
+        width: 1000px;
+      }
+    }
+  }
+}

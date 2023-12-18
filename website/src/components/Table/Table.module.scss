@@ -1,0 +1,102 @@
+@import "src/assets/styles/vars";
+
+.table {
+  background-color: #FFF;
+  border-radius: 5px;
+
+  svg {
+    fill: #0E0D0A;
+    cursor: pointer;
+    transition: .1s ease-in-out;
+    user-select: none;
+  }
+
+  & > div {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 10px 20px;
+    line-height: 20px;
+    transition: .1s ease-in-out;
+
+    :global {
+      .flex {
+        &.isRefund, &.isRec {
+          grid-template-columns: 110px 25px 20px 30px;
+        }
+
+        display: grid;
+        grid-template-columns: 125px 25px;
+        align-items: center;
+        justify-content: center;
+
+        &.term {
+          grid-template-columns: 1fr 15px;
+
+          span {
+            text-align: center;
+          }
+        }
+
+        span {
+          text-align: left;
+        }
+      }
+
+      .noPointer {
+        cursor: default;
+      }
+
+      .note {
+        background-color: transparent;
+      }
+
+      .red {
+        color: $error-color;
+      }
+
+      .green {
+        color: #0FB800;
+      }
+
+      .blue {
+        color: #001ffb;
+      }
+    }
+
+    &:nth-child(odd) {
+      background-color: #EDEDED;
+    }
+
+    &.headers {
+      background-color: $table-color;
+      border-radius: 5px 5px 0 0;
+      font-weight: 500;
+      padding: 20px;
+
+      .sortable {
+        cursor: pointer;
+        width: 100%;
+      }
+
+      .sorted {
+        position: relative;
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto 0;
+          height: 0;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-top: 5px solid #000;
+        }
+      }
+    }
+  }
+}

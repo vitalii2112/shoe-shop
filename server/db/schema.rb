@@ -49,7 +49,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_21_183745) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.decimal "amount", precision: 10, scale: 2
+    t.decimal "amount", precision: 10, scale: 2, null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
