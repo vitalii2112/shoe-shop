@@ -32,10 +32,10 @@ export type RootStackParamList = {
     More: undefined
     Profile: undefined
     AllOrders: undefined
-    Product: {productId: number | null}
+    Product: { productId: number | null }
     Products: undefined
     Users: undefined
-    User: {userId: number}
+    User: { userId: number }
 };
 export type StackNavigation = NavigationProp<RootStackParamList>;
 
@@ -47,11 +47,11 @@ const Navigation: FC = () => {
         dark: colorScheme === 'dark',
         colors: {
             primary: '#9dd558',
-            background: Colors.dark,
-            border: Colors.white,
-            card: Colors.darker,
-            text: Colors.white,
-            notification: Colors.darker
+            background: colorScheme === "dark" ? Colors.dark : Colors.light,
+            border: colorScheme === "dark" ? Colors.white : Colors.black,
+            card: colorScheme === "dark" ? Colors.darker : Colors.lighter,
+            text: colorScheme === "dark" ? Colors.white : Colors.black,
+            notification: colorScheme === "dark" ? Colors.darker : Colors.lighter
         }
     }
 
@@ -70,19 +70,26 @@ const Navigation: FC = () => {
                 <Stack.Screen name="Home" component={HomeScreen} options={{header: () => <Header/>}}/>
                 <Stack.Screen name="Cart" component={CartScreen}
                               options={{header: () => <Header backText={`Корзина${isPayed ? ' (Оплачено)' : ''}`}/>}}/>
-                <Stack.Screen name="Orders" component={OrdersScreen} options={{header: () => <Header backText="Ваши заказы"/>}}/>
+                <Stack.Screen name="Orders" component={OrdersScreen}
+                              options={{header: () => <Header backText="Ваши заказы"/>}}/>
                 <Stack.Screen name="Login" component={LoginScreen}
                               options={{header: () => <Header backText="Авторизация"/>}}/>
                 <Stack.Screen name="Register" component={RegisterScreen}
                               options={{header: () => <Header backText="Регистрация"/>}}/>
                 <Stack.Screen name="More" component={MoreScreen} options={{header: () => <Header backText="Меню"/>}}/>
-                <Stack.Screen name="Profile" component={ProfileScreen} options={{header: () => <Header backText="Профиль"/>}}/>
-                <Stack.Screen name="AllOrders" component={AllOrdersScreen} options={{header: () => <Header backText="Все заказы"/>}}/>
-                <Stack.Screen name="Users" component={UsersScreen} options={{header: () => <Header backText="Пользователи"/>}}/>
-                {/*// @ts-ignore*/}
-                <Stack.Screen name="User" component={UserScreen} options={{header: ({route}) => <Header backText={`Пользователь №${route.params?.userId}`}/>}}/>
-                <Stack.Screen name="Product" component={ProductScreen} options={{header: ({}) => <Header backText="Редактирование товара"/>}}/>
-                <Stack.Screen name="Products" component={ProductsScreen} options={{header: ({}) => <Header backText="Товары" addProduct/>}}/>
+                <Stack.Screen name="Profile" component={ProfileScreen}
+                              options={{header: () => <Header backText="Профиль"/>}}/>
+                <Stack.Screen name="AllOrders" component={AllOrdersScreen}
+                              options={{header: () => <Header backText="Все заказы"/>}}/>
+                <Stack.Screen name="Users" component={UsersScreen}
+                              options={{header: () => <Header backText="Пользователи"/>}}/>
+                <Stack.Screen name="User" component={UserScreen} options={{
+                    header: ({route}) => <Header backText={`Пользователь №${route.params?.userId}`}/>
+                }}/>
+                <Stack.Screen name="Product" component={ProductScreen}
+                              options={{header: ({}) => <Header backText="Редактирование товара"/>}}/>
+                <Stack.Screen name="Products" component={ProductsScreen}
+                              options={{header: ({}) => <Header backText="Товары" addProduct/>}}/>
             </Stack.Navigator>
             <NavBar/>
             <StatusBar backgroundColor={theme.colors.background}

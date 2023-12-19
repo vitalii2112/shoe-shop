@@ -13,6 +13,7 @@ import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../components/Navigation";
 import {useActions} from "../hooks/useActions";
 import {Alert} from "react-native";
+import {useTheme} from "@react-navigation/native";
 
 interface Props extends NativeStackScreenProps<RootStackParamList, 'More'> {
 }
@@ -33,12 +34,14 @@ const MoreItem = styled.View`
 
 const MoreItemText = styled.Text`
     font-size: 16px;
-
+    color: #9B9B9B;
 `
 
 const MoreScreen: FC<Props> = ({navigation}) => {
     const {isAuth, user} = useAppSelector(state => state.user)
     const {logout} = useActions()
+
+    const {dark} = useTheme()
 
     const logoutHandler = () => {
         Alert.alert('Вы уверены?', 'Вы уверены, что вы хотите выйти?', [
@@ -62,13 +65,13 @@ const MoreScreen: FC<Props> = ({navigation}) => {
         <MoreContainer>
             {!isAuth ? <>
                 <ButtonCircle onPress={() => navigation.navigate('Login')}>
-                    <MoreItem>
+                    <MoreItem style={{borderBottomColor: dark ? '#EAEAEA': '#9B9B9B'}}>
                         <LoginSVG/>
                         <MoreItemText>Войти</MoreItemText>
                     </MoreItem>
                 </ButtonCircle>
                 <ButtonCircle onPress={() => navigation.navigate('Register')}>
-                    <MoreItem>
+                    <MoreItem style={{borderBottomColor: dark ? '#EAEAEA': '#9B9B9B'}}>
                         <RegisterSVG/>
                         <MoreItemText>Регистрация</MoreItemText>
                     </MoreItem>
@@ -76,32 +79,32 @@ const MoreScreen: FC<Props> = ({navigation}) => {
             </> : <>
                 {user?.role === 'admin' && <>
                     <ButtonCircle onPress={() => navigation.navigate('Users')}>
-                        <MoreItem>
+                        <MoreItem style={{borderBottomColor: dark ? '#EAEAEA': '#9B9B9B'}}>
                             <UsersSVG/>
                             <MoreItemText>Пользователи</MoreItemText>
                         </MoreItem>
                     </ButtonCircle>
                     <ButtonCircle onPress={() => navigation.navigate('Products')}>
-                        <MoreItem>
+                        <MoreItem style={{borderBottomColor: dark ? '#EAEAEA': '#9B9B9B'}}>
                             <ProductsSVG/>
                             <MoreItemText>Товары</MoreItemText>
                         </MoreItem>
                     </ButtonCircle>
                     <ButtonCircle onPress={() => navigation.navigate('AllOrders')}>
-                        <MoreItem>
+                        <MoreItem style={{borderBottomColor: dark ? '#EAEAEA': '#9B9B9B'}}>
                             <OrdersSVG/>
                             <MoreItemText>Все заказы</MoreItemText>
                         </MoreItem>
                     </ButtonCircle>
                 </>}
                 <ButtonCircle onPress={() => navigation.navigate('Profile')}>
-                    <MoreItem>
+                    <MoreItem style={{borderBottomColor: dark ? '#EAEAEA': '#9B9B9B'}}>
                         <ProfileSVG/>
                         <MoreItemText>Профиль</MoreItemText>
                     </MoreItem>
                 </ButtonCircle>
                 <ButtonCircle onPress={logoutHandler}>
-                    <MoreItem>
+                    <MoreItem style={{borderBottomColor: dark ? '#EAEAEA' : '#9B9B9B'}}>
                         <LogoutSVG/>
                         <MoreItemText>Выйти</MoreItemText>
                     </MoreItem>

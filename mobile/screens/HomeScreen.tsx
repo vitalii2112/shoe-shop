@@ -45,7 +45,7 @@ const HomeScreen: FC = () => {
     const renderItem = useCallback(({item, index}: {item: IProduct, index: number}) => <Card buttonText="В корзину" {...item}
                                                             disabledText={cart.find(cartItem => cartItem.id === item.id) ? 'Добавлено' : ''}
                                                             cartHandler={addCartHandler} isLastChild={index % 2 !== 0}
-                                                            isLastRow={index >= (products?.length || 0) - ((products?.length || 0) % 2 === 0 ? 2 : 1)}/>, [products])
+                                                            isLastRow={index >= (products?.length || 0) - ((products?.length || 0) % 2 === 0 ? 2 : 1)}/>, [products, cart])
 
     if (isLoading)
         return <Loading/>

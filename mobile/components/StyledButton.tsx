@@ -67,11 +67,11 @@ const StyledButton: FC<Props> = ({
             marginBottom: marginBottom,
             borderColor: isInvalid ? '#ff3131' : type === 'default' ? colors.primary : 'transparent'
         }} onPress={onPress}>
-            {withArrow == 'left' && <ButtonArrowLeft/>}
+            {withArrow == 'left' && <ButtonArrowLeft stroke={colors.text}/>}
             <ButtonText style={{
-                color: isInvalid ? '#ff3131' : '#fff'
+                color: isInvalid ? '#ff3131' : colors.text
             }}>{disabled ? disabledText || text : text}</ButtonText>
-            {withArrow == 'right' && <ButtonArrowRight/>}
+            {withArrow == 'right' && <ButtonArrowRight stroke={colors.text}/>}
         </ButtonContainer>
     );
 };

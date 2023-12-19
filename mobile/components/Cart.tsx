@@ -99,7 +99,7 @@ const Cart: FC<Props> = ({setIsOrderComplete, setOrderId}) => {
             await paymentHandler()
     }
 
-    const renderItem = useCallback(({item}: {item: ICartItem}) => <CartItem {...item}/>, [])
+    const renderItem = useCallback(({item}: { item: ICartItem }) => <CartItem {...item}/>, [])
 
     return (
         <>

@@ -12,11 +12,11 @@ import {useAppSelector} from "../hooks/useAppSelector";
 
 
 const NavView = styled.View`
-  bottom: 0;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  border-top-width: 1px;
+    bottom: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    border-top-width: 1px;
 `
 
 const SVGView = styled.View`
@@ -25,7 +25,7 @@ const SVGView = styled.View`
 `
 
 const SVGText = styled.Text`
-  color: #9b9b9b;
+    color: #9b9b9b;
 `
 
 const NavBar: FC = () => {

@@ -18,6 +18,7 @@ const RegisterScreen: FC = () => {
 
     const onSubmit: SubmitHandler<IUserRegister> = register
 
+
     return (
         <FormContainer>
             <Controller name="first_name" control={control} rules={{
@@ -35,7 +36,7 @@ const RegisterScreen: FC = () => {
                 maxLength: {value: 50, message: 'Максимальная длина 50 символов'}
             }}
                         render={({field}) =>
-                            <FormBlock placeholder="Павел" label="Фамилия" type="text"
+                            <FormBlock placeholder="Дальцев" label="Фамилия" type="text"
                                        value={field.value} setValue={field.onChange} autoComplete="name-family"
                                        errorMessage={errors.last_name?.message}/>}/>
             <Controller name="email" control={control} rules={{
@@ -54,7 +55,7 @@ const RegisterScreen: FC = () => {
                             <FormBlock placeholder="password123" label="Пароль" type="text"
                                        autoComplete="new-password"
                                        value={field.value} setValue={field.onChange}
-                                       errorMessage={errors.email?.message}/>}/>
+                                       errorMessage={errors.password?.message}/>}/>
             <StyledButton text="Зарегистрироваться" disabled={Object.keys(errors).length > 0} isFull isSmall
                           onPress={handleSubmit(onSubmit)} marginBottom={35}/>
         </FormContainer>

@@ -29,9 +29,10 @@ const OrderList: FC<Props> = ({orders, onRefresh, onClientPress, isLoading, isAd
                                                           orderIndex={orderIndex} isAdmin={isAdmin}/>)}
         </>
 
-    const renderItem = useCallback(({item: order, index: orderIndex}: {item: IOrder, index: number}) => <OrderItem order={order} orderIndex={orderIndex}
-                                                                                    ordersLength={orders.length}
-                                                                                    isAdmin={isAdmin} onPress={() => order.user_id && onClientPress?.(order.user_id)}/>, [orders.length])
+    const renderItem = useCallback(({item: order, index: orderIndex}: { item: IOrder, index: number }) => <OrderItem
+        order={order} orderIndex={orderIndex}
+        ordersLength={orders.length}
+        isAdmin={isAdmin} onPress={() => order.user_id && onClientPress?.(order.user_id)}/>, [orders.length, isAdmin])
     return (
         <FlatList data={orders} removeClippedSubviews
                   refreshing={isLoading} onRefresh={onRefresh}
@@ -55,7 +56,11 @@ const OrderItem: FC<TOrderItemProps> = memo(({order, isAdmin, ordersLength, onPr
             <Block style={{width: '100%'}}>
                 <Title text={`Заказ №${order.id}`}/>
                 {isAdmin && <ButtonCircle onPress={onPress}>
-                    <Text style={{color: colors.text, fontSize: 16, textDecorationLine: order.user_id ? 'underline' : 'line-through'}}>
+                    <Text style={{
+                        color: colors.text,
+                        fontSize: 16,
+                        textDecorationLine: order.user_id ? 'underline' : 'line-through'
+                    }}>
                         {order.user_id ? `Клиент №${order.user_id}` : 'Клиент удален'}
                     </Text>
                 </ButtonCircle>}
@@ -77,7 +82,9 @@ const OrderItem: FC<TOrderItemProps> = memo(({order, isAdmin, ordersLength, onPr
                                                     isLastChild={index % 2 !== 0}
                                                     isLastRow={
                                                         ordersLength - 1 === orderIndex
-                                                            ? true
+                                                            ? order.items.length % 2 === 0
+                                                                ? index < order.items.length - 2
+                                                                : index % 2 === 0 && index !== order.items.length
                                                             : index < order.items.length - 2
                                                     }/>)}
         </View>

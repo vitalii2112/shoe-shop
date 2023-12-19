@@ -61,7 +61,7 @@ Rails.application.configure do
 
   # Highlight code that enqueued background job in logs.
   config.active_job.verbose_enqueue_logs = true
-
+config.hosts << "36dc-91-192-131-12.ngrok-free.app"
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

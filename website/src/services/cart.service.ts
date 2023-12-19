@@ -1,4 +1,4 @@
-import { ICartItem, ICartState } from "@/store/cart/types";
+import {ICartItem, ICartState} from "@/store/cart/types";
 
 export const CartService = {
     get(): ICartState {
@@ -14,7 +14,7 @@ export const CartService = {
     remove(id: number) {
         const cart = this.get();
         const updatedCartItems = cart.items.filter(item => item.id !== id);
-        localStorage.setItem('cart', JSON.stringify({items: updatedCartItems, isPayed: false }));
+        localStorage.setItem('cart', JSON.stringify({items: updatedCartItems, isPayed: false}));
     },
 
     clear() {
@@ -23,6 +23,6 @@ export const CartService = {
 
     setPayment(isPayed: boolean) {
         const cart = this.get();
-        localStorage.setItem('cart', JSON.stringify({ ...cart, isPayed }));
+        localStorage.setItem('cart', JSON.stringify({...cart, isPayed}));
     }
 };
