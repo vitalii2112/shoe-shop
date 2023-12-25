@@ -16,3 +16,11 @@ production:
   database: shoe_shop_api
   username: deploy
   password: kondrat0981
+
+test:
+  <<: *default
+  database: sneakers_shop_test
+  username: postgres
+  password: zxio512387hj
+  host: localhost
+  port: 5555

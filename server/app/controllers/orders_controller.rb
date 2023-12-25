@@ -32,16 +32,16 @@ class OrdersController < ApplicationController
         end
       end
     else
-      render json: { error: 'Ожидался массив заказов' }, status: :unprocessable_entity
+      return render json: { error: 'Ожидался массив заказов' }, status: :unprocessable_entity
     end
 
     @items_data = order_params.map { |item| [item['id'], item['quantity']] }.to_h
     @items = Item.where(id: @items_data.keys)
 
     ActiveRecord::Base.transaction do
-      @order = Order.new(user_id: current_user.id, amount: @items.sum { |item| item.price * @items_data[item.id] })
+      @order = Order.new(user_id: current_user.id, amount: @items.sum { |item| item.price * @items_data[item.id.to_s].to_i })
       if @order.save
-        order_descriptions_data = @items.map { |item| { order_id: @order.id, item_id: item.id, quantity: @items_data[item.id] } }
+        order_descriptions_data = @items.map { |item| { order_id: @order.id, item_id: item.id, quantity: @items_data[item.id.to_s].to_i } }
         @order_descriptions = OrdersDescription.create!(order_descriptions_data)
         render json: { message: 'Order created', order_id: @order.id }, status: :created
       else
