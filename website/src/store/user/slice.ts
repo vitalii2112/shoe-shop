@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {EStatus, UserSliceType} from './types';
-import {checkAuth, login, logout, register, updateMe} from "@/store/user/actions";
+import {checkAuth, login, logout, register, updateMe} from "./actions";
 
 const initialState: UserSliceType = {
     status: EStatus.IDLE,

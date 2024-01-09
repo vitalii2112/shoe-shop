@@ -10,9 +10,9 @@ const Confirm: FC<ConfirmDialogProps<TConfirmProps, boolean>> = ({title, text, o
         <Modal opened={show} onCloseModal={() => proceed(false)} className={styles.confirm}>
             {title && <h4>{title}</h4>}
             <p className={cn({[styles.noTitle]: !title})}>{text}</p>
-            <div className="btn__wrapper">
-                <button className="btn-common" onClick={() => proceed(true)}>{okLabel || 'Да'}</button>
-                <button className="btn-common cancel"
+            <div className="btn__wrapper" data-testid="confirm">
+                <button className="btn-common" data-testid="confirm-yes" onClick={() => proceed(true)}>{okLabel || 'Да'}</button>
+                <button className="btn-common cancel" data-testid="confirm-no"
                         onClick={() => proceed(false)}>{cancelLabel || 'Нет'}</button>
             </div>
         </Modal>

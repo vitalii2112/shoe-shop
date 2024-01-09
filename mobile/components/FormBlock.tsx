@@ -46,8 +46,8 @@ const FormRequiredText = styled.Text`
 const FormBlock: FC<Props> = ({value, setValue, placeholder, options, errorMessage, label, autoComplete, type}) => {
     const {colors} = useTheme()
     return (
-        <FormBlockContainer>
-            <FormLabel>
+        <FormBlockContainer testID="form-block">
+            <FormLabel testID="form-block-label">
                 <Text style={{color: colors.text}}>{label}</Text>
                 <FormRequiredText>*</FormRequiredText>
             </FormLabel>
@@ -62,10 +62,10 @@ const FormBlock: FC<Props> = ({value, setValue, placeholder, options, errorMessa
                         color: colors.text
                     }
                 }} placeholder={options?.[0] || {label: placeholder}} value={value} items={options?.slice(1) || []} onValueChange={setValue}/>
-            : <FormInput autoComplete={autoComplete} style={{color: colors.text, borderColor: errorMessage ? '#FF3434' : '#ACACAC'}}
+            : <FormInput testID="form-block-input" autoComplete={autoComplete} style={{color: colors.text, borderColor: errorMessage ? '#FF3434' : '#ACACAC'}}
                          secureTextEntry={autoComplete === 'current-password' || autoComplete === 'new-password'}
                          inputMode={type} placeholder={placeholder} value={value} onChangeText={setValue} defaultValue=""/>}
-            {errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
+            {errorMessage && <FormErrorMessage testID="form-block-error">{errorMessage}</FormErrorMessage>}
         </FormBlockContainer>
     );
 };

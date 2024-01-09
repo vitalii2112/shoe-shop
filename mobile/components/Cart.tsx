@@ -80,8 +80,10 @@ const Cart: FC<Props> = ({setIsOrderComplete, setOrderId}) => {
                     text1: 'Ошибка',
                     text2: 'Не удалось оформить заказ'
                 })
+        } finally {
+            setIsLoading(false)
         }
-        setIsLoading(false)
+
     }
 
     const paymentHandler = async () => {
@@ -104,13 +106,14 @@ const Cart: FC<Props> = ({setIsOrderComplete, setOrderId}) => {
     return (
         <>
             {isLoading && <Loading overlay text={isPayed ? 'Загрузка...' : 'Оплата товара'}/>}
-            <FlatList data={cart} contentContainerStyle={{gap: 15}} renderItem={renderItem}/>
+            <FlatList testID="cart-list" data={cart} contentContainerStyle={{gap: 15}} renderItem={renderItem}/>
             <CartTotal>
                 <Text style={{color: colors.text}}>Итого:</Text>
                 <DashedLine dashLength={2}
                             style={{flex: 1, marginLeft: 7, marginRight: 7, top: -4, alignSelf: 'flex-end'}}
                             dashColor={Color.convertHexToRGBA(colors.text, 50)}/>
-                <CartTotalPrice style={{color: colors.text}}>{cartTotal.toFixed(2)} грн.</CartTotalPrice>
+                <CartTotalPrice style={{color: colors.text}}
+                                testID="cart-total">{cartTotal.toFixed(2)} грн.</CartTotalPrice>
             </CartTotal>
             {<CartRequirements>
                 {isAuth

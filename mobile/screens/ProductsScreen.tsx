@@ -43,7 +43,7 @@ const ProductsScreen: FC<Props> = ({navigation}) => {
                                                             isLastChild={index % 2 !== 0}
                                                             isLastRow={index >= (products.length || 0) - ((products.length || 0) % 2 === 0 ? 2 : 1)}/>, [products.length])
     return (
-        <FlatList data={products} numColumns={2} removeClippedSubviews
+        <FlatList data={products} numColumns={2} removeClippedSubviews testID="products-screen"
                   refreshing={isLoading} onRefresh={() => loadProducts()}
                   renderItem={renderItem}
                   contentContainerStyle={{gap: 15}}

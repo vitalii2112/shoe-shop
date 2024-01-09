@@ -55,15 +55,15 @@ const Modal: FC<ModalType> = ({onCloseModal, opened, children, className}) => {
     return (
         <AnimatePresence>
             {opened &&
-                <motion.div className={styles.modalBlock} ref={modalRef}
+                <motion.div className={styles.modalBlock} ref={modalRef} data-testid="modal"
                             initial={{opacity: 0}}
                             animate={{opacity: 1}}
                             exit={{opacity: 0}}>
                     <motion.div className={cn(styles.modal, className)}
                                 initial={{transform: 'translate(-50%,-45%)'}}
                                 animate={{transform: 'translate(-50%,-50%)'}}
-                                exit={{transform: 'translate(-50%,-45%)'}}>
-                        <CloseSVG className={styles.modalClose} ref={closeRef}/>
+                                exit={{transform: 'translate(-50%,-45%)'}} data-testid="modal-body">
+                        <CloseSVG className={styles.modalClose} ref={closeRef} data-testid="modal-close"/>
                         {children}
                     </motion.div>
                 </motion.div>}

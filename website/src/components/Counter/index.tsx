@@ -28,8 +28,8 @@ const Counter: FC<TCounter> = ({setValue, value}) => {
     }, [string, setValue]);
 
     return (
-        <div className={styles.counter}>
-            <input type="text" value={string} onChange={onChange} onBlur={resetHandler}/>
+        <div className={styles.counter} data-testid="counter-block">
+            <input type="text" value={string} onChange={onChange} onBlur={resetHandler} data-testid="counter"/>
         </div>
     );
 };

@@ -40,10 +40,10 @@ const CartEmpty: FC<Props> = ({image, buttonArrow, buttonText, title, subTitle})
     const {colors} = useTheme()
     const navigation = useNavigation<StackNavigation>()
     return (
-        <CartEmptyBlock>
-            <CartImage source={image}/>
-            {title && <CartTitle style={{color: colors.text}}>{title}</CartTitle>}
-            {subTitle && <CartSubTitle style={{color: colors.text}}>{subTitle}</CartSubTitle>}
+        <CartEmptyBlock testID="cart-empty-block">
+            <CartImage source={image} testID="cart-empty-image"/>
+            {title && <CartTitle style={{color: colors.text}} testID="cart-empty-title">{title}</CartTitle>}
+            {subTitle && <CartSubTitle style={{color: colors.text}} testID="cart-empty-subtitle">{subTitle}</CartSubTitle>}
             <StyledButton text={buttonText} withArrow={buttonArrow ? 'left' : undefined}
                           onPress={() => navigation.navigate('Home')}/>
         </CartEmptyBlock>

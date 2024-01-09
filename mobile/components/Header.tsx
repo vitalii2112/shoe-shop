@@ -54,9 +54,9 @@ const Header: FC<Props> = ({backText, addProduct}) => {
                 <ButtonCircle onPress={() => navigation.goBack()}>
                     <BackSVG fill={colors.text} width={30} height={30}/>
                 </ButtonCircle>
-                <BackText style={{color: colors.text}}>{backText}</BackText>
+                <BackText testID="header-back-text" style={{color: colors.text}}>{backText}</BackText>
             </> : <>
-                <HeaderLogo source={require('../assets/img/logo.png')}/>
+                <HeaderLogo source={require('../assets/img/logo.png')} testID="header-logo"/>
                 <View>
                     <HeaderTitle style={{color: colors.text}}>shoe store</HeaderTitle>
                     <HeaderSubTitle style={{color: colors.text}}>Лучшие кроссовки в одном месте</HeaderSubTitle>

@@ -53,7 +53,7 @@ const UsersScreen: FC<Props> = ({navigation}) => {
         return <Loading/>
     return (
         <View>
-            <FlatList data={users} removeClippedSubviews
+            <FlatList data={users} removeClippedSubviews testID="users-screen"
                       refreshing={isLoading} onRefresh={loadUsers}
                       renderItem={renderItem}/>
         </View>
@@ -67,7 +67,7 @@ type UserItemProps = {
 
 const UserItem: FC<Omit<Props, 'route'> & UserItemProps> = memo(({navigation, user, colors}) => (
     <ButtonCircle onPress={() => navigation.navigate('User', {userId: user.id})}>
-        <UserBlock>
+        <UserBlock testID="user-block">
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text style={{color: colors.text}}>{user.id}. {user.first_name} {user.last_name}</Text>
                 <Text

@@ -34,31 +34,31 @@ const HeaderLinks: FC<THeaderLinks> = ({setIsAuthOpen}) => {
         <>
             {isAuth ? <>
                 {user?.role === 'admin' && <>
-                    <li title="Пользователи">
+                    <li title="Пользователи" data-testid="header-desktop-admin-link">
                         <Link to="/users">
                             <UsersSVG className={styles.strokeSVG}/>
                         </Link>
                     </li>
-                    <li title="Товары">
+                    <li title="Товары" data-testid="header-desktop-admin-link">
                         <Link to="/items">
                             <ProductsSVG/>
                         </Link>
                     </li>
                     <li>
-                        <Link to="/orders" title="Все заказы">
+                        <Link to="/orders" title="Все заказы" data-testid="header-desktop-admin-link">
                             <OrderSVG className={styles.strokeSVG}/>
                         </Link>
                     </li>
                 </>}
                 <li>
-                    <Link to="/profile" title="Профиль">
+                    <Link to="/profile" title="Профиль" data-testid="header-desktop-user-link">
                         <UserSVG/>
                     </Link>
                 </li>
-                <li onClick={logoutHandler} title="Выйти из аккаунта">
+                <li onClick={logoutHandler} title="Выйти из аккаунта" data-testid="header-desktop-user-link">
                     <LogoutSVG className={styles.otherSVG}/>
                 </li>
-            </> : <li onClick={() => setIsAuthOpen(true)} title="Авторизация/Регистрация">
+            </> : <li onClick={() => setIsAuthOpen(true)} title="Авторизация/Регистрация" data-testid="header-desktop-link">
                 <LoginSVG className={styles.otherSVG}/>
             </li>}
         </>

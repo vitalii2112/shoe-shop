@@ -38,25 +38,25 @@ const NavBar: FC = () => {
     return (
         <NavView style={{backgroundColor: colors.background}}>
             <ButtonCircle onPress={() => navigation.navigate('Home')}>
-                <SVGView style={{width: dimensions.width / 4 - 20}}>
+                <SVGView style={{width: dimensions.width / 4 - 20}} testID="nav-bar-btn">
                     <HomeSVG stroke="#9B9B9B"/>
                     <SVGText>Главная</SVGText>
                 </SVGView>
             </ButtonCircle>
             <ButtonCircle onPress={() => navigation.navigate('Cart')}>
-                <SVGView style={{width: dimensions.width / 4 - 20}}>
+                <SVGView style={{width: dimensions.width / 4 - 20}} testID="nav-bar-btn">
                     <CartSVG fill="#9B9B9B"/>
                     <SVGText>Корзина</SVGText>
                 </SVGView>
             </ButtonCircle>
             <ButtonCircle onPress={() => navigation.navigate(isAuth ? 'Orders' : 'Login')}>
-                <SVGView style={{width: dimensions.width / 4 - 20}}>
+                <SVGView style={{width: dimensions.width / 4 - 20}} testID="nav-bar-btn">
                     <OrderSVG stroke="#9B9B9B"/>
                     <SVGText>Заказы</SVGText>
                 </SVGView>
             </ButtonCircle>
             <ButtonCircle onPress={() => navigation.navigate('More')}>
-                <SVGView style={{width: dimensions.width / 4 - 20}}>
+                <SVGView style={{width: dimensions.width / 4 - 20}} testID="nav-bar-btn">
                     <MoreSVG fill="#9B9B9B"/>
                     <SVGText>Ещё</SVGText>
                 </SVGView>

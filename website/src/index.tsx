@@ -7,6 +7,8 @@ import {store} from "@/store/store";
 import {BrowserRouter} from "react-router-dom";
 import Loading from "@/components/Loading";
 import {QueryClient, QueryClientProvider} from "react-query";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const queryClient = new QueryClient({
     defaultOptions: {

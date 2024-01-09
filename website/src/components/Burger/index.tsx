@@ -43,10 +43,10 @@ const Burger: FC<TBurgerProps> = ({setIsAuthOpen}) => {
     return (
         <>
             {isAuth
-                ? <li onClick={() => setIsOpened(true)}>
+                ? <li onClick={() => setIsOpened(true)} data-testid="burger-open-btn">
                     <BurgerSVG/>
                 </li>
-                : <li onClick={() => setIsAuthOpen(true)}>
+                : <li onClick={() => setIsAuthOpen(true)} data-testid="burger-login-btn">
                     <LoginSVG/>
                 </li>}
 
@@ -55,37 +55,37 @@ const Burger: FC<TBurgerProps> = ({setIsAuthOpen}) => {
                     {isAuth && <>
                         {user?.role === 'admin' && <>
                             <li>
-                                <Link to="/">
+                                <Link to="/" data-testid="admin-link">
                                     <HomeSVG/>
                                     <span>Главная</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/users">
+                                <Link to="/users" data-testid="admin-link">
                                     <UsersSVG/>
                                     <span>Пользователи</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/items">
+                                <Link to="/items" data-testid="admin-link">
                                     <ProductsSVG/>
                                     <span>Товары</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/orders">
+                                <Link to="/orders" data-testid="admin-link">
                                     <OrderSVG/>
                                     <span>Все заказы</span>
                                 </Link>
                             </li>
                         </>}
                         <li>
-                            <Link to="/profile">
+                            <Link to="/profile" data-testid="user-link">
                                 <UserSVG/>
                                 <span>Профиль</span>
                             </Link>
                         </li>
-                        <li onClick={logoutHandler}>
+                        <li onClick={logoutHandler} data-testid="user-link" role="button">
                             <LogoutSVG/>
                             <span>Выйти из аккаунта</span>
                         </li>

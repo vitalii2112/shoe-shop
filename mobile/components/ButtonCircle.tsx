@@ -53,8 +53,8 @@ const ButtonCircle: FC<Props> = ({children, onPress, disabled}) => {
     };
 
     return (
-        <Pressable onPress={onPress}
-                   onPressIn={onPressIn}
+        <Pressable onPress={onPress} aria-label="pressable-button"
+                   onPressIn={onPressIn} disabled={disabled}
                    onPressOut={onPressOut}>
             <Container style={animatedScaleStyle}>{children}</Container>
         </Pressable>

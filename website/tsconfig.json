@@ -1,7 +1,7 @@
 {
+  "extends": "./tsconfig.path.json",
   "compilerOptions": {
     "target": "es5",
-    "baseUrl": "./src",
     "lib": [
       "dom",
       "dom.iterable",
@@ -20,38 +20,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "paths": {
-      "@/components/*": [
-        "./components/*"
-      ],
-      "@/assets/*": [
-        "./assets/*"
-      ],
-      "@/api/*": [
-        "api/*"
-      ],
-      "@/hooks/*": [
-        "hooks/*"
-      ],
-      "@/models/*": [
-        "models/*"
-      ],
-      "@/config/*": [
-        "config/*"
-      ],
-      "@/services/*": [
-        "services/*"
-      ],
-      "@/utils/*": [
-        "utils/*"
-      ],
-      "@/store/*": [
-        "store/*"
-      ],
-      "@/pages/*": [
-        "pages/*"
-      ]
-    },
+    "types": ["node", "jest", "@testing-library/jest-dom"]
   },
   "include": [
     "**/*.ts",
@@ -60,5 +29,5 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
 }

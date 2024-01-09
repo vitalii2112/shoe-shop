@@ -32,9 +32,13 @@ const OrderList: FC<Props> = ({orders, onRefresh, onClientPress, isLoading, isAd
     const renderItem = useCallback(({item: order, index: orderIndex}: { item: IOrder, index: number }) => <OrderItem
         order={order} orderIndex={orderIndex}
         ordersLength={orders.length}
-        isAdmin={isAdmin} onPress={() => order.user_id && onClientPress?.(order.user_id)}/>, [orders.length, isAdmin])
+        isAdmin={isAdmin} onPress={() => {
+            if (order.user_id && onClientPress) {
+                onClientPress(order.user_id)
+            }
+    }}/>, [orders.length, isAdmin])
     return (
-        <FlatList data={orders} removeClippedSubviews
+        <FlatList data={orders} removeClippedSubviews testID="order-list"
                   refreshing={isLoading} onRefresh={onRefresh}
                   renderItem={renderItem}
         />
@@ -52,7 +56,7 @@ type TOrderItemProps = {
 const OrderItem: FC<TOrderItemProps> = memo(({order, isAdmin, ordersLength, onPress, orderIndex}) => {
     const {colors} = useTheme()
     return <>
-        <Block style={{flexWrap: 'wrap'}}>
+        <Block style={{flexWrap: 'wrap'}} testID="order-item">
             <Block style={{width: '100%'}}>
                 <Title text={`Заказ №${order.id}`}/>
                 {isAdmin && <ButtonCircle onPress={onPress}>
@@ -60,7 +64,7 @@ const OrderItem: FC<TOrderItemProps> = memo(({order, isAdmin, ordersLength, onPr
                         color: colors.text,
                         fontSize: 16,
                         textDecorationLine: order.user_id ? 'underline' : 'line-through'
-                    }}>
+                    }} testID="order-item-client">
                         {order.user_id ? `Клиент №${order.user_id}` : 'Клиент удален'}
                     </Text>
                 </ButtonCircle>}
@@ -71,7 +75,7 @@ const OrderItem: FC<TOrderItemProps> = memo(({order, isAdmin, ordersLength, onPr
                     color: colors.text,
                     fontSize: 16,
                     fontWeight: "700"
-                }}>{order.amount} грн.</Text>
+                }} testID="order-item-amount">{order.amount} грн.</Text>
             </Block>
         </Block>
         <View style={{

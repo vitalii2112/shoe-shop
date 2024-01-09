@@ -61,8 +61,9 @@ const Cart: FC = () => {
             const isExpired = onAuthError(e)
             if (!isExpired)
                 toast.error('Ошибка при создании заказа')
+        } finally {
+            setIsLoading(false)
         }
-        setIsLoading(false)
     }
 
     const paymentHandler = async () => {
@@ -89,21 +90,21 @@ const Cart: FC = () => {
         document.documentElement.style.overflow = isOpen ? 'hidden' : 'auto'
     }, [isOpen]);
     return (
-        <Mover onClose={closeHandler} isOpened={isOpen} className={styles.cart}
+        <Mover onClose={closeHandler} isOpened={isOpen} className={styles.cart} data-testid="cart"
                title={`Корзина ${isPayed ? '(Оплачено)' : ''}`}>
             {isLoading && <Loading absolute text="Происходит оплата товара..."/>}
             {cart.length > 0 ?
                 <>
-                    <div className={styles.cartItems}>
+                    <div className={styles.cartItems} data-testid="cart-items">
                         {cart.map(item => (
-                            <div className={styles.cartItem} key={item.id}>
+                            <div className={styles.cartItem} key={item.id} data-testid="cart-item">
                                 <img className={styles.cartItemImg} src={`${API_URL}${item.img}`} alt={item.name}/>
                                 <div className={styles.cartItemText}>
                                     <p>{item.name}</p>
                                     <p>{item.quantity} шт.</p>
                                     <b>{item.price} грн.</b>
                                 </div>
-                                <RemoveSVG className={styles.cartItemRemove} onClick={removeHandler(item.id)}/>
+                                <RemoveSVG data-testid="cart-item-remove" className={styles.cartItemRemove} onClick={removeHandler(item.id)}/>
                             </div>
                         ))}
                     </div>
@@ -112,11 +113,11 @@ const Cart: FC = () => {
                             <li>
                                 <span>Итого:</span>
                                 <div></div>
-                                <b>{totalPrice.toFixed(2)} грн.</b>
+                                <b data-testid="cart-total">{totalPrice.toFixed(2)} грн.</b>
                             </li>
                         </ul>
                         {user ?
-                            <button onClick={cartHandler} className="btn">
+                            <button onClick={cartHandler} className="btn" data-testid="cart-btn-pay">
                                 <span>{isPayed ? 'Оформить заказ' : 'Перейти к оплате'}</span>
                                 <ArrowSVG/>
                             </button>
@@ -124,18 +125,18 @@ const Cart: FC = () => {
                                 <p className={cn(styles.authRequired, styles.text)}>Для завершения оформления
                                     заказа, пожалуйста,
                                     войдите в свой аккаунт</p>
-                                <button onClick={authHandler} className="btn">
+                                <button onClick={authHandler} className="btn" data-testid="cart-btn-auth">
                                     <span>Войти</span>
                                 </button>
                             </>}
                     </div>
                 </>
-                : <div className={styles.cartEmpty}>
-                    <img width={120}
+                : <div className={styles.cartEmpty} data-testid="cart-empty">
+                    <img width={120} data-testid="cart-empty-img"
                          src={isOrderCompleted ? "/img/complete-order.jpg" : "/img/empty-cart.jpg"}
                          alt="Empty cart"/>
-                    <h2>{isOrderCompleted ? "Заказ оформлен" : "Корзина пустая"}</h2>
-                    <p className={styles.text}>{isOrderCompleted ? `Ваш заказ #${orderId} скоро будет передан курьерской доставке` : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."}</p>
+                    <h2 data-testid="cart-empty-title">{isOrderCompleted ? "Заказ оформлен" : "Корзина пустая"}</h2>
+                    <p data-testid="cart-empty-text" className={styles.text}>{isOrderCompleted ? `Ваш заказ #${orderId} скоро будет передан курьерской доставке` : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."}</p>
                     <button className={cn("btn", styles.cartEmptyBtn)} onClick={closeHandler}>
                         <ArrowSVG/>
                         <span>Вернуться назад</span>

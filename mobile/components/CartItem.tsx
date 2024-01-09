@@ -54,13 +54,13 @@ const CartItem: FC<Props> = memo(({id, quantity, img, name, price}) => {
         }
     };
     return (
-        <CartItemContainer>
-            <CartItemImage source={{uri: `${API_URL}${img}`}}/>
+        <CartItemContainer testID="cart-item-block">
+            <CartItemImage source={{uri: `${API_URL}${img}`}} testID="cart-item-image"/>
             <CartItemInfo>
                 <View style={{flex: 1}}>
-                    <Text style={{color: colors.text}}>{name.toUpperCase()}</Text>
+                    <Text style={{color: colors.text}} testID="cart-item-name">{name.toUpperCase()}</Text>
                     <Counter initialValue={quantity} onChange={quantityHandler(id)}/>
-                    <CartItemPrice>{price} грн.</CartItemPrice>
+                    <CartItemPrice testID="cart-item-price">{price} грн.</CartItemPrice>
                 </View>
                 <MenuView onPressAction={menuHandler(id)} themeVariant={dark ? 'dark' : 'light'} actions={[{
                     id: 'destruct',

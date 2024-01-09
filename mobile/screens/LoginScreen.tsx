@@ -42,7 +42,7 @@ const LoginScreen: FC<Props> = ({navigation, route}) => {
     return (
         <>
             {status === EStatus.LOADING && <Loading overlay/>}
-            <FormContainer contentContainerStyle={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+            <FormContainer contentContainerStyle={{alignItems: 'center', justifyContent: 'center', flex: 1}} testID="screen-login">
                 <Controller name="email" control={control} rules={{
                     required: "Обязательное поле",
                     validate: value => isEmail(value) ? true : 'Неверный формат почты'

@@ -11,7 +11,8 @@ const AuthRequire = () => {
         case EStatus.SUCCESS:
             if (isAuth)
                 return <Outlet/>;
-            break;
+            else
+                return <Navigate to="/" replace state={{isAuthOpen: true}}/>;
         case EStatus.IDLE:
             return null;
         case EStatus.LOADING:

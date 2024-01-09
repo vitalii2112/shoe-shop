@@ -9,8 +9,6 @@ const SearchField: FC<SearchFieldProps> = ({
                                                placeholder,
                                                initValue = '',
                                                onSearch,
-                                               analogs,
-                                               setAnalogs,
                                                name,
                                                className,
                                                searchRef,
@@ -36,6 +34,7 @@ const SearchField: FC<SearchFieldProps> = ({
     return (
         <div className={cn(styles.search, className)} {...props}>
             <input
+                data-testid="search"
                 type="text"
                 placeholder={placeholder}
                 onKeyDown={keyDownHandler}
@@ -46,8 +45,8 @@ const SearchField: FC<SearchFieldProps> = ({
                 onChange={handleChange}
                 value={searchValue}
             />
-            {searchValue && <CloseSVG className={styles.closeBtn} onClick={resetHandler}/>}
-            <button type="button" onClick={() => onSearch(searchValue)}>
+            {searchValue && <CloseSVG className={styles.closeBtn} onClick={resetHandler} data-testid="search-clear"/>}
+            <button type="button" onClick={() => onSearch(searchValue)} data-testid="search-btn">
                 <SearchSVG/>
             </button>
         </div>

@@ -61,30 +61,32 @@ const AuthModal: FC<TAuthModalProps> = ({open, onClose}) => {
     return (
         <Modal onCloseModal={onCloseModal} opened={open} key={open ? 'open' : 'closed'}>
             {status === EStatus.LOADING && <Loading absolute modal/>}
-            <Tabs className={styles.modal} selectedIndex={activeTab} onSelect={handleTabChange}>
+            <Tabs className={styles.modal} selectedIndex={activeTab} onSelect={handleTabChange} data-testid="auth-modal">
                 <TabList className={styles.modalTabList}>
-                    <Tab className={styles.modalTab} selectedClassName={styles.selected}>Авторизация</Tab>
+                    <Tab className={styles.modalTab} selectedClassName={styles.selected} data-testid="login-tab">Авторизация</Tab>
                     <Tab className={styles.modalTab}
-                         selectedClassName={styles.selected}>Регистрация</Tab>
+                         selectedClassName={styles.selected} data-testid="register-tab">Регистрация</Tab>
                 </TabList>
 
-                <TabPanel className={styles.modalTabPanel} selectedClassName={styles.selected}>
+                <TabPanel className={styles.modalTabPanel} selectedClassName={styles.selected} data-testid="auth-modal-login">
                     <form onSubmit={loginFormHandleSubmit(onSubmitLoginForm)}>
                         <div className={styles.formControl}>
                             <label htmlFor="login_email">Email</label>
                             <input
+                                data-testid="login-input"
                                 type="email"
                                 className={cn({[styles.invalid]: loginFormErrors.email})}
                                 placeholder="example@email.com"
                                 id="login_email"
                                 {...loginFormRegister('email', {required: 'Введите email'})}
                             />
-                            {loginFormErrors.email && <span>{loginFormErrors.email.message}</span>}
+                            {loginFormErrors.email && <span data-testid="login-invalid">{loginFormErrors.email.message}</span>}
                         </div>
 
                         <div className={styles.formControl}>
                             <label htmlFor="password">Пароль</label>
                             <input
+                                data-testid="login-input"
                                 type="password"
                                 className={cn({[styles.invalid]: loginFormErrors.password})}
                                 placeholder="password123"
@@ -94,16 +96,16 @@ const AuthModal: FC<TAuthModalProps> = ({open, onClose}) => {
                                     minLength: {value: 6, message: 'Минимальная длина 6 символов'}
                                 })}
                             />
-                            {loginFormErrors.password && <span>{loginFormErrors.password.message}</span>}
+                            {loginFormErrors.password && <span data-testid="login-invalid">{loginFormErrors.password.message}</span>}
                         </div>
 
                         <div className={styles.buttonWrapper}>
-                            <button>Войти</button>
+                            <button data-testid="login-btn">Войти</button>
                         </div>
                     </form>
                 </TabPanel>
 
-                <TabPanel className={styles.modalTabPanel} selectedClassName={styles.selected}>
+                <TabPanel className={styles.modalTabPanel} selectedClassName={styles.selected} data-testid="auth-modal-register">
                     <form onSubmit={createFromHandleSubmit(onSubmitCreateForm)}>
                         <div className={styles.formControl}>
                             <label htmlFor="register_firstName">Имя</label>

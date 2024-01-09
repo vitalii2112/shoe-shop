@@ -8,7 +8,7 @@ const Profile: FC = () => {
     const {updateMe} = useActions()
 
     return (
-        <div className="layout">
+        <div className="layout" data-testid="profile">
             <h1>Профиль</h1>
             {user && <UserProfile user={user} onUpdate={updateMe}/>}
         </div>

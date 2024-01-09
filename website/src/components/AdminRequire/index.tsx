@@ -5,6 +5,7 @@ import {toast} from "react-toastify";
 import {useAppSelector} from "@/hooks/useAppSelector";
 import {FC} from "react";
 
+
 const AdminRequire: FC = () => {
     const {isAuth, status, user} = useAppSelector(state => state.user);
     if (user?.role === 'admin' && status === EStatus.SUCCESS)

@@ -9,10 +9,10 @@ import FormUploadInput from "@/components/FormUploadInput";
 
 const EditModal: FC<TEditModalProps> = ({item, isOpen, onClose, onSubmit, onDelete}) => {
     const {handleSubmit, getValues, control, formState: {errors}} = useForm<IProductCreate>()
-    const formHandler: SubmitHandler<IProductCreate> = (data) => onSubmit(data, item?.id)
+    const formHandler: SubmitHandler<IProductCreate> = (data) => onSubmit({...data, price: +data.price}, item?.id)
     return (
         <Modal onCloseModal={onClose} opened={isOpen} className={styles.editModal}>
-            <form onSubmit={handleSubmit(formHandler)}>
+            <form onSubmit={handleSubmit(formHandler)} data-testid="edit">
                 <Controller name="name" control={control} defaultValue={item?.name || ''}
                             rules={{required: 'Обязательное поле', minLength: {value: 3, message: 'Минимальная длина 3 символов'}}}
                             render={({field}) =>
@@ -36,8 +36,8 @@ const EditModal: FC<TEditModalProps> = ({item, isOpen, onClose, onSubmit, onDele
                                                  isFileExist={!!item?.img}/>}/>
 
                 <div className="btn__wrapper">
-                    {item && <button className="btn-common cancel" type="button" onClick={() => onDelete(item.id)}>Удалить</button>}
-                    <button className="btn-common">{item ? 'Сохранить' : 'Добавить'}</button>
+                    {item && <button className="btn-common cancel" type="button" onClick={() => onDelete(item.id)} data-testid="edit-remove">Удалить</button>}
+                    <button className="btn-common" data-testid="edit-submit">{item ? 'Сохранить' : 'Добавить'}</button>
                 </div>
             </form>
         </Modal>

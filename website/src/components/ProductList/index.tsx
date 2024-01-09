@@ -5,7 +5,7 @@ import {TProductProps} from "@/components/ProductList/types";
 
 const ProductList: FC<TProductProps> = ({products, onAdd, isAddToCart, isEditable, onItemClick}) => {
     return (
-        <div className={styles.productList}>
+        <div className={styles.productList} data-testid="product-list">
             {products.map((item, index) => item === undefined ? <Card key={index} isLoading={true}/> :
                 <Card key={index} {...item} isCartExist={isAddToCart?.(item.id)} isEdit={isEditable} onClick={onItemClick}
                       onAdd={onAdd?.(item)}

@@ -5,7 +5,6 @@ import Cart from "@/components/Cart";
 import {useActions} from "@/hooks/useActions";
 import {CartService} from "@/services/cart.service";
 import {ToastContainer} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 import AuthRequire from "@/components/AuthRequire";
 import AdminRequire from "@/components/AdminRequire";
 import Loading from "@/components/Loading";

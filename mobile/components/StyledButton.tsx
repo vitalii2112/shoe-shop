@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {FC, useCallback} from 'react';
 import styled from "styled-components/native";
 import {useTheme} from "@react-navigation/native";
 import ArrowSVG from '../assets/svg/arrow.svg'
@@ -57,8 +57,15 @@ const StyledButton: FC<Props> = ({
                                  }) => {
     const {colors} = useTheme()
     const dimensions = useWindowDimensions()
+
+    const onPressHandler = useCallback((event: GestureResponderEvent) => {
+        if (disabled || !onPress)
+            return
+        onPress(event)
+    }, [onPress])
+
     return (
-        <ButtonContainer activeOpacity={0.7} disabled={disabled} style={{
+        <ButtonContainer activeOpacity={0.7} disabled={disabled} testID="button" style={{
             backgroundColor: disabled ? colors.notification : type === 'submit' ? colors.primary : type === 'delete' ? '#ff3131' : 'transparent',
             height: isSmall ? 'auto' : 55,
             padding: isSmall ? 10 : 0,
@@ -66,12 +73,12 @@ const StyledButton: FC<Props> = ({
             width: isHalf ? dimensions.width / 2 - 20 : isFull ? '100%' : '90%',
             marginBottom: marginBottom,
             borderColor: isInvalid ? '#ff3131' : type === 'default' ? colors.primary : 'transparent'
-        }} onPress={onPress}>
-            {withArrow == 'left' && <ButtonArrowLeft stroke={colors.text}/>}
+        }} onPress={onPressHandler}>
+            {withArrow == 'left' && <ButtonArrowLeft testID="button-arrow-left" stroke={colors.text}/>}
             <ButtonText style={{
                 color: isInvalid ? '#ff3131' : colors.text
             }}>{disabled ? disabledText || text : text}</ButtonText>
-            {withArrow == 'right' && <ButtonArrowRight stroke={colors.text}/>}
+            {withArrow == 'right' && <ButtonArrowRight testID="button-arrow-right" stroke={colors.text}/>}
         </ButtonContainer>
     );
 };

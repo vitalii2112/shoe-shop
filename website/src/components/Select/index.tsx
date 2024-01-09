@@ -37,6 +37,7 @@ const Select: FC<SelectComponentType> = ({
     useLayoutEffect(() => {
         if (isOpened && selectListRef.current) {
             selectListRef.current.scroll(0, 0);
+            // selectListRef.current.scrollTop = 0;
         }
 
         if (isOpened && searchRef.current) {
@@ -55,14 +56,14 @@ const Select: FC<SelectComponentType> = ({
                 ? selected.label
                 : label;
     return (
-        <div className={cn(styles.select, className, {[styles.label]: selected === undefined})} ref={selectRef}
+        <div className={cn(styles.select, className, {[styles.label]: selected === undefined})} ref={selectRef} data-testid="select"
              {...props}>
             <div
                 className={cn(styles.selectedHead, {[styles.open]: isOpened})}
-                onClick={() => openEnabled && setIsOpened(prevState => !prevState)}>{labelString}</div>
+                onClick={() => openEnabled && setIsOpened(prevState => !prevState)} data-testid="select-label">{labelString}</div>
             <motion.div transition={{ease: 'easeInOut', duration: 0.2}} className={styles.selectListContainer}
-                        animate={{height: isOpened ? 'auto' : 0, marginTop: isOpened ? '5px' : '0px'}}>
-                {searchEnable && <div className={styles.search} ref={searchRef}><input type="text" value={searchValue}
+                        animate={{height: isOpened ? 'auto' : 0, marginTop: isOpened ? '5px' : '0px'}} data-testid="select-list">
+                {searchEnable && <div className={styles.search} ref={searchRef}><input type="text" value={searchValue} data-testid="select-search"
                                                                                        placeholder={searchPlaceholder}
                                                                                        onChange={(e) => setSearchValue(e.target.value)}/>
                     <SearchSVG/>
@@ -73,18 +74,18 @@ const Select: FC<SelectComponentType> = ({
                         && options?.map(item => {
                             if (typeof item === 'string')
                                 if (searchValue === '')
-                                    return <li key={item} className={styles.selectItem}
+                                    return <li key={item} className={styles.selectItem} data-testid="select-item"
                                                onClick={() => setSelected(item)}>{item}</li>;
                                 else
                                     return item.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1 &&
-                                        <li key={item} className={styles.selectItem}
+                                        <li key={item} className={styles.selectItem} data-testid="select-item"
                                             onClick={() => setSelected(item)}>{item}</li>;
                             else if (searchValue === '')
-                                return <li key={item.value} className={styles.selectItem}
+                                return <li key={item.value} className={styles.selectItem} data-testid="select-item"
                                            onClick={() => setSelected(item)}>{item.label}</li>;
                             else
                                 return item.label.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1 &&
-                                    <li key={item.value} className={styles.selectItem}
+                                    <li key={item.value} className={styles.selectItem} data-testid="select-item"
                                         onClick={() => setSelected(item)}>{item.label}</li>;
                         })}
                 </ul>

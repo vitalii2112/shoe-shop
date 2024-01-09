@@ -10,6 +10,12 @@ const Color = {
         const g = parseInt(hex.substring(2, 4), 16);
         const b = parseInt(hex.substring(4, 6), 16);
 
+        if (isNaN(r) || isNaN(g) || isNaN(b))
+            throw new Error('Incorrect hex value')
+
+        if (opacity < 0 || opacity > 100)
+            throw new Error('Incorrect opacity value')
+
         if (opacity > 1 && opacity <= 100) {
             opacity = opacity / 100;
         }

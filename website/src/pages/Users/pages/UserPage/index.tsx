@@ -26,7 +26,7 @@ const UserPage: FC = () => {
         navigate('..')
     }
     return (
-        <div className="layout">
+        <div className="layout" data-testid="user-page">
             <TitleBack title={`Профиль ${user?.first_name || ''} ${user?.last_name || ''}`}/>
             {!user ? isLoading
                     ? <Loading/>

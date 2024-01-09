@@ -20,7 +20,7 @@ const LoadingText = styled.Text`
 
 const Loading: FC<Props> = ({overlay, text}) => {
     return (
-        <LoadingView style={{
+        <LoadingView testID="loading" style={{
             backgroundColor: overlay ? 'rgba(0, 0, 0, 0.5)' : 'none',
             position: overlay ? 'absolute' : 'relative',
             width: overlay ? '100%' : 'auto',
@@ -28,7 +28,7 @@ const Loading: FC<Props> = ({overlay, text}) => {
             top: overlay ? 0 : 'auto',
         }}>
             <ActivityIndicator color="#9dd558" size="large"/>
-            <LoadingText>{text ? text : 'Загрузка...'}</LoadingText>
+            <LoadingText testID="loading-text">{text ? text : 'Загрузка...'}</LoadingText>
         </LoadingView>
     );
 };

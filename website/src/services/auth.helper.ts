@@ -14,7 +14,7 @@ export const getToken = () => {
 }
 
 export const toastAuthError = (error: any, status: number, responseText: string[], errorText: string, cb?: () => void) => {
-    if (error.response?.status === status && responseText.includes(error.response?.data)) {
+    if (error?.response?.status === status && responseText.includes(error?.response?.data)) {
         toast.error(errorText)
         cb?.()
     }

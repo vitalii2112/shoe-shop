@@ -70,7 +70,7 @@ const Profile: FC<Props> = ({user, orders, onSubmit, onDelete, isLoading}) => {
     return (
         <>
             {isLoading && <Loading overlay/>}
-            <ScrollView>
+            <ScrollView testID="profile-screen">
                 <View style={{padding: 15, paddingBottom: 0}}>
                     <Controller name="first_name" control={control} rules={{
                         required: "Обязательное поле",

@@ -26,7 +26,7 @@ function Orders() {
             .finally(() => setIsLoading(false))
     }, [user,onAuthError])
     return (
-        <div className="layout">
+        <div className="layout" data-testid="orders">
             <h1>Все заказы</h1>
             <div>
                 {!orders.length && <h2 style={{fontSize: 24, textAlign: "center"}}>Список заказов пуст</h2>}

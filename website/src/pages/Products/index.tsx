@@ -42,9 +42,8 @@ const Products: FC = () => {
         }
     }
 
-    console.log(modal)
     return (
-        <div className={cn(styles.products, 'layout')}>
+        <div className={cn(styles.products, 'layout')} data-testid="products">
             {isLoading && <Loading/>}
             <div className={styles.header}>
                 <h1>Товары</h1>

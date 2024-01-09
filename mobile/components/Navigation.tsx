@@ -1,13 +1,11 @@
 import React, {FC, useEffect} from 'react';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen";
-import {NavigationContainer, NavigationProp, Theme} from "@react-navigation/native";
-import {StatusBar, useColorScheme} from "react-native";
+import {NavigationProp} from "@react-navigation/native";
 import NavBar from "./NavBar";
 import CartScreen from "../screens/CartScreen";
 import OrdersScreen from "../screens/OrdersScreen";
 import Header from "./Header";
-import {Colors} from "react-native/Libraries/NewAppScreen";
 import {useActions} from "../hooks/useActions";
 import {getToken} from "../services/auth.helper";
 import {CartService} from "../services/cart.service";
@@ -42,20 +40,7 @@ export type StackNavigation = NavigationProp<RootStackParamList>;
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 const Navigation: FC = () => {
-    const colorScheme = useColorScheme();
-    const theme: Theme = {
-        dark: colorScheme === 'dark',
-        colors: {
-            primary: '#9dd558',
-            background: colorScheme === "dark" ? Colors.dark : Colors.light,
-            border: colorScheme === "dark" ? Colors.white : Colors.black,
-            card: colorScheme === "dark" ? Colors.darker : Colors.lighter,
-            text: colorScheme === "dark" ? Colors.white : Colors.black,
-            notification: colorScheme === "dark" ? Colors.darker : Colors.lighter
-        }
-    }
-
-    const {setCart, checkAuth} = useActions()
+        const {setCart, checkAuth} = useActions()
 
     const isPayed = useAppSelector(state => state.cart.isPayed)
 
@@ -65,7 +50,7 @@ const Navigation: FC = () => {
         setCart(CartService.get())
     }, [checkAuth, setCart]);
     return (
-        <NavigationContainer theme={theme}>
+        <>
             <Stack.Navigator screenOptions={{animation: 'none'}}>
                 <Stack.Screen name="Home" component={HomeScreen} options={{header: () => <Header/>}}/>
                 <Stack.Screen name="Cart" component={CartScreen}
@@ -92,9 +77,7 @@ const Navigation: FC = () => {
                               options={{header: ({}) => <Header backText="Товары" addProduct/>}}/>
             </Stack.Navigator>
             <NavBar/>
-            <StatusBar backgroundColor={theme.colors.background}
-                       barStyle={theme.dark ? 'light-content' : 'dark-content'}/>
-        </NavigationContainer>
+        </>
     );
 };
 

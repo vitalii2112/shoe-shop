@@ -62,18 +62,18 @@ const MoreScreen: FC<Props> = ({navigation}) => {
     }
 
     return (
-        <MoreContainer>
+        <MoreContainer testID="more-screen">
             {!isAuth ? <>
                 <ButtonCircle onPress={() => navigation.navigate('Login')}>
                     <MoreItem style={{borderBottomColor: dark ? '#EAEAEA': '#9B9B9B'}}>
                         <LoginSVG/>
-                        <MoreItemText>Войти</MoreItemText>
+                        <MoreItemText testID="link-unauthorized">Войти</MoreItemText>
                     </MoreItem>
                 </ButtonCircle>
                 <ButtonCircle onPress={() => navigation.navigate('Register')}>
                     <MoreItem style={{borderBottomColor: dark ? '#EAEAEA': '#9B9B9B'}}>
                         <RegisterSVG/>
-                        <MoreItemText>Регистрация</MoreItemText>
+                        <MoreItemText testID="link-unauthorized">Регистрация</MoreItemText>
                     </MoreItem>
                 </ButtonCircle>
             </> : <>
@@ -81,32 +81,32 @@ const MoreScreen: FC<Props> = ({navigation}) => {
                     <ButtonCircle onPress={() => navigation.navigate('Users')}>
                         <MoreItem style={{borderBottomColor: dark ? '#EAEAEA': '#9B9B9B'}}>
                             <UsersSVG/>
-                            <MoreItemText>Пользователи</MoreItemText>
+                            <MoreItemText testID="link-admin">Пользователи</MoreItemText>
                         </MoreItem>
                     </ButtonCircle>
                     <ButtonCircle onPress={() => navigation.navigate('Products')}>
                         <MoreItem style={{borderBottomColor: dark ? '#EAEAEA': '#9B9B9B'}}>
                             <ProductsSVG/>
-                            <MoreItemText>Товары</MoreItemText>
+                            <MoreItemText testID="link-admin">Товары</MoreItemText>
                         </MoreItem>
                     </ButtonCircle>
                     <ButtonCircle onPress={() => navigation.navigate('AllOrders')}>
                         <MoreItem style={{borderBottomColor: dark ? '#EAEAEA': '#9B9B9B'}}>
                             <OrdersSVG/>
-                            <MoreItemText>Все заказы</MoreItemText>
+                            <MoreItemText testID="link-admin">Все заказы</MoreItemText>
                         </MoreItem>
                     </ButtonCircle>
                 </>}
                 <ButtonCircle onPress={() => navigation.navigate('Profile')}>
                     <MoreItem style={{borderBottomColor: dark ? '#EAEAEA': '#9B9B9B'}}>
                         <ProfileSVG/>
-                        <MoreItemText>Профиль</MoreItemText>
+                        <MoreItemText testID="link-user">Профиль</MoreItemText>
                     </MoreItem>
                 </ButtonCircle>
                 <ButtonCircle onPress={logoutHandler}>
                     <MoreItem style={{borderBottomColor: dark ? '#EAEAEA' : '#9B9B9B'}}>
                         <LogoutSVG/>
-                        <MoreItemText>Выйти</MoreItemText>
+                        <MoreItemText testID="link-user">Выйти</MoreItemText>
                     </MoreItem>
                 </ButtonCircle>
             </>}

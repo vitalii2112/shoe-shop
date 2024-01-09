@@ -13,14 +13,14 @@ const Loading: FC<LoadingProps> = ({absolute, modal, text}) => {
     }, [absolute, modal])
 
     return (
-        <div className={cn(styles.loading, {[styles.absolute]: absolute, [styles.modal]: modal})}>
+        <div data-testid="loading" className={cn(styles.loading, {[styles.absolute]: absolute, [styles.modal]: modal})}>
             <div className={styles.ldsRing}>
                 <div></div>
                 <div></div>
                 <div></div>
                 <div></div>
             </div>
-            {text && <p className={styles.text}>{text}</p>}
+            {text && <p className={styles.text} data-testid="loading-text">{text}</p>}
         </div>
     );
 };

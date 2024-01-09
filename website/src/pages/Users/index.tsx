@@ -33,7 +33,7 @@ const Users: FC = () => {
             .finally(() => setIsLoading(false))
     }, [onAuthError]);
     return (
-        <div className={cn(styles.users, "layout")}>
+        <div className={cn(styles.users, "layout")} data-testid="users">
             <h1>Пользователи</h1>
             {isLoading && <Loading/>}
             <Table cb={(field) => setSortField(field)} className={styles.table}

@@ -27,7 +27,7 @@ const UserProfile: FC<TUserProfileProps> = ({user, onUpdate, onDelete}) => {
 
     const deleteHandler = async () => {
         if (onDelete) {
-            const confirm = await confirmation(`Вы действительно хотите удалить позователя ${user?.first_name} ${user?.last_name}?`, 'Удаление', {okLabel: 'Да, удалить'})
+            const confirm = await confirmation(`Вы действительно хотите удалить пользователя ${user?.first_name} ${user?.last_name}?`, 'Удаление', {okLabel: 'Да, удалить'})
             if (confirm)
                 onDelete()
         }
@@ -52,7 +52,7 @@ const UserProfile: FC<TUserProfileProps> = ({user, onUpdate, onDelete}) => {
     }, [user, setValue, onAuthError]);
 
     return (
-        <div className={styles.userProfile}>
+        <div className={styles.userProfile} data-testid="user-profile">
             <form onSubmit={handleSubmit(onSubmit)} className={styles.userForm}>
                 <div className={styles.formBlock}>
                     <Controller name="first_name" control={control} defaultValue={user.first_name}
@@ -88,24 +88,25 @@ const UserProfile: FC<TUserProfileProps> = ({user, onUpdate, onDelete}) => {
                                     render={({field}) =>
                                         <FormInput value={field.value} setValue={field.onChange}
                                                    label="Роль" type="select"
+                                                   data-testid="user-profile-role"
                                                    placeholder="Выберите роль"
                                                    options={['admin', 'user']}
                                                    errorMessage={errors.role?.message}/>}/>}
                 </div>
                 <div className="btn__wrapper">
-                    {onDelete && isRoleEdited && <button className="btn-common cancel" type="button"
+                    {onDelete && isRoleEdited && <button className="btn-common cancel" type="button" data-testid="user-profile-delete"
                                                          onClick={deleteHandler}>Удалить</button>}
-                    <button className="btn-common">Сохранить</button>
+                    <button className="btn-common" data-testid="user-profile-submit">Сохранить</button>
                 </div>
             </form>
-            <h3 className={styles.orderTitle}>{user.id !== currentUser?.id ? 'Заказы' : 'Ваши заказы'}</h3>
+            <h3 className={styles.orderTitle} data-testid="user-profile-orders-title">{user.id !== currentUser?.id ? 'Заказы' : 'Ваши заказы'}</h3>
             {!isLoading && !orders.length && (!onDelete
-                ? <div className={styles.userOrders}>
+                ? <div className={styles.userOrders} data-testid="user-profile-current-user-orders-empty">
                     <img src="/img/empty-order.png" alt="Empty orders"/>
                     <p>У вас пока нет оформленных заказов</p>
                     <Link to="/" className="btn">Сделать заказ</Link>
                 </div>
-                : <h3 className={styles.emptyOrders}>Список заказов пуст</h3>)}
+                : <h3 className={styles.emptyOrders} data-testid="user-profile-orders-empty">Список заказов пуст</h3>)}
             {orders.map(order => <OrderItem key={order.id} items={order.items} id={order.id} amount={order.amount}
                                             isLoading={isLoading}/>)}
         </div>

@@ -30,7 +30,7 @@ const Header: FC = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.state]);
     return (
-        <header className={styles.header}>
+        <header className={styles.header} data-testid="header">
             <Link to="/">
                 <div className={styles.logo}>
                     <img src="/img/logo.png" alt="logo" height={40}/>
@@ -41,7 +41,7 @@ const Header: FC = () => {
                 </div>
             </Link>
             <ul className={styles.headerLinks}>
-                <li onClick={() => setCartOpen(true)} title="Корзина">
+                <li onClick={() => setCartOpen(true)} title="Корзина" data-testid="cart-open">
                     <CartSVG/>
                     <span>{totalPrice.toFixed(2)} грн.</span>
                 </li>

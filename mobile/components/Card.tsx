@@ -70,28 +70,28 @@ const Card: FC<Props> = ({
     const {colors} = useTheme();
     // console.log(id, name, isLastRow)
     return (
-        <CardView
+        <CardView testID="card"
             style={{
                 maxWidth: dimensions.width / 2,
                 borderRightWidth: isLastChild ? 0 : 1,
                 borderBottomWidth: isLastRow ? 0 : 1,
             }}>
-            <CardImage
+            <CardImage testID="card-image"
                 source={{
                     uri: `${API_URL}${img}`,
                     width: dimensions.width / 2 - 20,
                     height: 250,
                 }}
             />
-            <CardTitle style={{color: colors.text}} selectable>
+            <CardTitle style={{color: colors.text}} selectable testID="card-title">
                 {name.toUpperCase()}
             </CardTitle>
-            <CardDescription style={{color: colors.text}} selectable>
+            <CardDescription style={{color: colors.text}} selectable testID="card-desc">
                 {description}
             </CardDescription>
             <CardPriceTitle style={{color: colors.text}}>цена:</CardPriceTitle>
-            <CardPrice style={{color: colors.text}}>{price} грн.</CardPrice>
-            {cartHandler && id && !quantity && buttonText ? (
+            <CardPrice style={{color: colors.text}} testID="card-price">{price} грн.</CardPrice>
+            {(cartHandler && id && !quantity && buttonText) ? (
                 <StyledButton
                     text={buttonText}
                     isFull
@@ -103,7 +103,7 @@ const Card: FC<Props> = ({
                     }
                 />
             ) : (
-                <Text>{quantity} шт.</Text>
+                <Text testID="card-quantity">{quantity} шт.</Text>
             )}
         </CardView>
     );

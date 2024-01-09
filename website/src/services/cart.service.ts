@@ -7,6 +7,7 @@ export const CartService = {
 
     add(item: ICartItem) {
         const cart = this.get();
+        console.log(cart)
         cart.items.push(item);
         localStorage.setItem('cart', JSON.stringify(cart));
     },

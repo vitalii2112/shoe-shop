@@ -7,7 +7,7 @@ import cn from 'classnames';
 
 const TitleBack: FC<TitleBackProps> = ({title, children, className, ...props}) => {
     return (<div className={cn(styles.title, className)} {...props}>
-            <Link to=".." className={styles.titleBack} title="Вернуться назад">
+            <Link to=".." className={styles.titleBack} title="Вернуться назад" data-testid="title-back">
                 <h1>{title}</h1>
                 <BackSVG/>
             </Link>

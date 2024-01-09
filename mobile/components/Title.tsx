@@ -17,7 +17,7 @@ const TitleText = styled.Text`
 const Title: FC<Props> = ({text}) => {
     const {colors} = useTheme()
     return (
-        <TitleText style={{color: colors.text}}>{text}</TitleText>
+        <TitleText style={{color: colors.text}} aria-label="title">{text}</TitleText>
     );
 };
 

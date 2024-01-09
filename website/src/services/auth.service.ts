@@ -1,7 +1,7 @@
 import {IUser, IUserUpdate} from "@/models/IUser";
-import axios, {axiosClassic} from "@/api/axios";
 import {getAuthUrl} from "@/config/api.config";
 import {removeTokenStorage, saveTokenToStorage} from "@/services/auth.helper";
+import axios, {axiosClassic} from "@/api/axios";
 
 export const AuthService = {
     async register(email: string, password: string, first_name: string, last_name: string) {

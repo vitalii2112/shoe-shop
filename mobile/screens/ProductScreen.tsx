@@ -82,6 +82,7 @@ const ProductScreen: FC<Props> = ({route, navigation}) => {
             setValue('img', res)
             clearErrors('img')
         } catch (e) {
+            console.log(e)
         }
     }
 
@@ -125,15 +126,17 @@ const ProductScreen: FC<Props> = ({route, navigation}) => {
                 return
             }
             setIsLoading(true)
-            ItemsService.create(data)
+            ItemsService.create({...data, price: +data.price})
                 .then(res => {
                     if (res) {
+                        console.log('toast res')
                         Toast.show({
                             text1: 'Добавление товара',
                             text2: 'Добавление успешно'
                         })
                         navigation.navigate('Products')
                     } else {
+                        console.log('toast not res')
                         Toast.show({
                             type: 'error',
                             text1: 'Добавление товара',
@@ -142,6 +145,7 @@ const ProductScreen: FC<Props> = ({route, navigation}) => {
                     }
                 }).catch(error => {
                 const isExpired = onAuthError(error)
+                console.log('toast error', isExpired)
                 if (!isExpired)
                     Toast.show({
                         type: 'error',
@@ -193,9 +197,9 @@ const ProductScreen: FC<Props> = ({route, navigation}) => {
         return <Loading/>
 
     return (
-        <ScrollView style={{padding: 15}} removeClippedSubviews>
+        <ScrollView style={{padding: 15}} removeClippedSubviews testID="product-screen">
             {(productImage || product?.img) && <ProductImageBlock>
-                <ProductImage
+                <ProductImage testID="product-image"
                     source={{
                         uri: typeof productImage === "string" ? `${API_URL}${productImage}` : productImage.uri,
                         width: 250,

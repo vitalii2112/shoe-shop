@@ -43,7 +43,7 @@ function Home() {
     }
 
     return (
-        <div className={cn(styles.home, "layout")}>
+        <div className={cn(styles.home, "layout")} data-testid="home">
             <div className={styles.header}>
                 <h1>{searchParam ? `Результаты поиска: ${searchParam}` : 'Все кроссовки'}</h1>
                 <SearchField initValue={searchParam || ''} onSearch={onSearch} className={styles.search}

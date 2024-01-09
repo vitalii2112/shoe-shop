@@ -20,7 +20,7 @@ const RegisterScreen: FC = () => {
 
 
     return (
-        <FormContainer>
+        <FormContainer testID="register-screen">
             <Controller name="first_name" control={control} rules={{
                 required: "Обязательное поле",
                 minLength: {value: 2, message: 'Минимальная длина 2 символа'},

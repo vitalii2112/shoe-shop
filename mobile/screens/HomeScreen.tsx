@@ -24,7 +24,8 @@ const HomeScreen: FC = () => {
             if (res) {
                 setProducts(res)
             }
-        }).catch(() => {
+        }).catch((e) => {
+            console.log(e)
             Toast.show({
                 type: 'error',
                 text1: 'Загрузка товаров',
@@ -53,7 +54,7 @@ const HomeScreen: FC = () => {
     return (
         <Container>
             <Title text="Все кроссовки"/>
-            <FlatList data={products} numColumns={2} removeClippedSubviews
+            <FlatList data={products} numColumns={2} removeClippedSubviews testID="home-screen"
                       refreshing={isLoading} onRefresh={() => loadProducts()}
                       renderItem={renderItem}
                       contentContainerStyle={{gap: 15}}

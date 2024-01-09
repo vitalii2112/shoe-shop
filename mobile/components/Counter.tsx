@@ -37,10 +37,10 @@ const Counter: FC<Props> = ({initialValue, onChange, maxValue = 10}) => {
     }, [value])
 
     return (
-        <CounterContainer>
+        <CounterContainer testID="counter">
             <ButtonCircle disabled={value === 1} onPress={decreaseValue}><MinusSVG
                 fill={value === 1 ? '#9B9B9B' : colors.primary}/></ButtonCircle>
-            <CounterValue>{value}</CounterValue>
+            <CounterValue testID="counter-value">{value}</CounterValue>
             <ButtonCircle disabled={value === maxValue} onPress={increaseValue}><PlusSVG
                 fill={value === maxValue ? '#9B9B9B' : colors.primary}/></ButtonCircle>
         </CounterContainer>

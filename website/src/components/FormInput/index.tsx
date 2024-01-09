@@ -33,7 +33,7 @@ const FormInput: FC<FormInputProps> = ({
     const renderInput = () => {
         if (type === 'select') {
             return (
-                <Select
+                <Select data-testid="form-select"
                     label={placeholder || ''}
                     selected={value?.toString()}
                     className={cn(styles.select, {[styles.error]: errorMessage})}
@@ -45,6 +45,7 @@ const FormInput: FC<FormInputProps> = ({
             const inputType = type === 'text' || type === 'number' ? 'text' : type;
             return (
                 <input
+                    data-testid="form-input"
                     type={inputType}
                     id={label}
                     className={cn({[styles.error]: errorMessage})}
@@ -60,12 +61,12 @@ const FormInput: FC<FormInputProps> = ({
 
     return (
         <div className={cn(styles.formInput, className)} {...props}>
-            <label htmlFor={label}>
+            <label htmlFor={label} data-testid="form-label">
                 {label}
                 {required && <sup>*</sup>}
             </label>
             {renderInput()}
-            {errorMessage && <span>{errorMessage}</span>}
+            {errorMessage && <span data-testid="form-error">{errorMessage}</span>}
         </div>
     );
 };

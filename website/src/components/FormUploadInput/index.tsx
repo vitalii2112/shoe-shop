@@ -17,12 +17,12 @@ const FormUploadInput: FC<TFormUploadInputProps> = ({errorMessage, onChange, isF
     return (
         <div className={cn(styles.formControl, {[styles.error]: errorMessage})}>
             <label htmlFor="img">Фото<sup>*</sup></label>
-            <div className={cn(styles.fileWrapper, {[styles.uploaded]: isUploaded})}>
+            <div className={cn(styles.fileWrapper, {[styles.uploaded]: isUploaded})} data-testid="upload-block">
                 <label htmlFor="img">
-                    <input type="file" id="img" accept="image/webp" onChange={changeHandler}/>
+                    <input type="file" id="img" accept="image/webp" onChange={changeHandler} data-testid="upload-input"/>
                 </label>
             </div>
-            {errorMessage && <span>{errorMessage}</span>}
+            {errorMessage && <span data-testid="upload-error">{errorMessage}</span>}
         </div>
     );
 };
